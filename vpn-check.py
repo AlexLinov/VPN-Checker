@@ -5,9 +5,15 @@ import requests
 import json
 import pandas as pd
 import subprocess
+import sys
 
 # Read input file and extract first IP address
-ips = pd.read_csv('Location_of_IP_List', header=None)
+if len(sys.argv) != 2:
+    print("Usage: python3 script.py <input_file_location>")
+    sys.exit(1)
+
+# Read input file and extract first IP address
+ips = pd.read_csv(sys.argv[1], header=None)
 ip = ips.iloc[0, 0]
 
 block_list = []
@@ -27,7 +33,7 @@ for index, row in ips.iterrows():
             company_list.append(json["network"]["autonomous_system_organization"])
 
 # Write block lists to output files if they contain data
-if block_list:
-    pd.DataFrame(block_list).to_csv('WRITE_LOCATION_OF/block_list.txt', header=False, index=False)
-if company_list:
-    pd.DataFrame(company_list).to_csv('WRITE_LOCATION_OF/company_list.txt', header=False, index=False)
+if len(block_list) > 0:
+    pd.DataFrame(block_list).to_csv('block_list.txt', header=False, index=False)
+if len(company_list) > 0:
+    pd.DataFrame(company_list).to_csv('company_list.txt', header=False, index=False)
