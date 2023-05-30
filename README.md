@@ -23,5 +23,4 @@ Usage
 3. Navigate to the directory containing the script.
 4. Run the script with the following command:
 
-```shell
 python script.py <input_file_location>
