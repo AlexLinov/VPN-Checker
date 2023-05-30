@@ -15,7 +15,7 @@ Before running the script, make sure you have the following prerequisites instal
 You can install the necessary libraries using pip:
 
 ```shell
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 
 Usage
 1. Clone the repository or download the script file.
@@ -23,4 +23,4 @@ Usage
 3. Navigate to the directory containing the script.
 4. Run the script with the following command:
 
-python script.py <input_file_location>
+python3 script.py <input_file_location>
